@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-style: italic;
+}
+
+body div.grid.grid-cols-1 input {
+  border-radius: 5px;
+}
+
+body div.grid.grid-cols-1 label {
+  font-weight: 800;
+}
+
+body div.grid.grid-cols-1 input:focus-visible {
+  outline: 2px solid darkblue;
+  text-indent: 5px;
+}
