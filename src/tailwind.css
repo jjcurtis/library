@@ -12,6 +12,7 @@ h1 {
 
 body div.grid.grid-cols-1 input {
   border-radius: 5px;
+  padding-right: 1rem;
 }
 
 body div.grid.grid-cols-1 label {
