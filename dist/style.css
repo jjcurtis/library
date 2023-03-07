@@ -534,16 +534,16 @@ video {
   display: grid;
 }
 
-.w-1\/2 {
-  width: 50%;
-}
-
 .w-10 {
   width: 2.5rem;
 }
 
-.grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+.w-3\/5 {
+  width: 60%;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .items-center {
@@ -556,6 +556,10 @@ video {
 
 .gap-1 {
   gap: 0.25rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .rounded-lg {
@@ -650,16 +654,34 @@ h1 {
   font-style: italic;
 }
 
-body div.grid.grid-cols-1 input {
+body div.grid.grid-cols-2 input {
   border-radius: 5px;
   padding-right: 1rem;
 }
 
-body div.grid.grid-cols-1 label {
+body div.grid.grid-cols-2 label {
   font-weight: 800;
 }
 
-body div.grid.grid-cols-1 input:focus-visible {
+body div.grid.grid-cols-2 input:focus-visible {
   outline: 2px solid darkblue;
   text-indent: 5px;
+}
+
+@media (min-width: 640px) {
+  .sm\:w-1\/2 {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:w-2\/5 {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:w-1\/4 {
+    width: 25%;
+  }
 }

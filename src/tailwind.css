@@ -10,16 +10,16 @@ h1 {
   font-style: italic;
 }
 
-body div.grid.grid-cols-1 input {
+body div.grid.grid-cols-2 input {
   border-radius: 5px;
   padding-right: 1rem;
 }
 
-body div.grid.grid-cols-1 label {
+body div.grid.grid-cols-2 label {
   font-weight: 800;
 }
 
-body div.grid.grid-cols-1 input:focus-visible {
+body div.grid.grid-cols-2 input:focus-visible {
   outline: 2px solid darkblue;
   text-indent: 5px;
 }
