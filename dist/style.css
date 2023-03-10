@@ -647,6 +647,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.5fr 2fr 4fr;
+  height: 100vh;
   grid-template-areas:
     'header'
     'form'
@@ -663,11 +664,12 @@ h1 {
 }
 
 .content {
+  margin: auto 0;
   padding: 2rem;
   display: grid;
   gap: 1rem;
-  justify-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), .5fr));
 }
 
 .card {
@@ -675,9 +677,11 @@ h1 {
   align-items: center;
   width: 100%;
   height: 100%;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 10px;
-  background: linear-gradient(rgb(15, 26, 46), rgb(63, 57, 122));
+  box-shadow: 3px 3px 3px black;
+  background: 
+  linear-gradient(to right, rgb(21, 170, 240) 8px, rgb(15, 26, 46) 1%, rgb(63, 57, 122) 98%);
   color: white;
   padding: 1.5rem;
 }
@@ -697,6 +701,7 @@ h1 {
 body div.grid.grid-cols-2 input {
   border-radius: 5px;
   padding-right: 1rem;
+  transition: 300ms;
 }
 
 body div.grid.grid-cols-2 label {
