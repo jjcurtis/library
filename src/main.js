@@ -1,7 +1,7 @@
 /* eslint-disable no-sequences */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-alert */
-const count = 1;
+let count = 1;
 const content = document.querySelector('.content');
 const title = document.getElementById('title');
 const author = document.getElementById('author');
@@ -46,6 +46,12 @@ function capitalize(string) {
 }
 
 function createCards() {
+  if (library.length > 1) {
+    const cards = document.querySelectorAll('div.card');
+    cards.forEach(card => {
+      content.removeChild(card);
+    })
+  }
   library.forEach(book => {
     const keys = Object.keys(book);
     const values = Object.values(book);
@@ -63,28 +69,11 @@ function createCards() {
     div.classList = 'card';
     ul.classList = 'list';
     div.id = `card-${count}`;
+    count += 1;
     div.appendChild(ul);
     content.appendChild(div);
+    return count;
   });
-
-  // const newBook = library[library.length - 1];
-  // const keys = Object.keys(newBook);
-  // const values = Object.values(newBook);
-
-  // for (let i = 0; i < keys.length; i++) {
-  //   h2.classList = `${keys[i]}`;
-  //   h2.textContent = `${capitalize(keys[i])}:`;
-  //   li.textContent = `${capitalize(values[i])}`;
-  //   ul.append(h2, li);
-  // }
-
-  // div.classList = 'card';
-  // ul.classList = 'list';
-  // div.id = `card-${count}`;
-  // div.appendChild(ul);
-  // content.appendChild(div);
-  // count += 1;
-  // return count;
 }
 
 submit.addEventListener('click', e => {
