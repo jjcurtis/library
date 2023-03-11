@@ -9,11 +9,6 @@ const pages = document.getElementById('pages');
 const read = document.getElementById('read');
 const submit = document.getElementById('submit');
 
-// const div = document.createElement('div');
-// const ul = document.createElement('ul');
-// const h2 = document.createElement('h2');
-// const li = document.createElement('li');
-
 const library = [];
 
 function Book() {
@@ -24,16 +19,6 @@ function Book() {
 }
 
 function addToLibrary() {
-  if (
-    title.value === '' ||
-    author.value === '' ||
-    pages.value === '' ||
-    read.value === ''
-  ) {
-    alert('Please complete each field to submit a new book');
-    return;
-  }
-
   library.push(new Book());
   title.value = '';
   author.value = '';
@@ -50,13 +35,15 @@ function createCards() {
     const cards = document.querySelectorAll('div.card');
     cards.forEach(card => {
       content.removeChild(card);
-    })
+    });
   }
   library.forEach(book => {
     const keys = Object.keys(book);
     const values = Object.values(book);
     const div = document.createElement('div');
     const ul = document.createElement('ul');
+    const btn = document.createElement('button');
+    btn.textContent = 'X';
 
     for (let i = 0; i < keys.length; i++) {
       const h2 = document.createElement('h2');
@@ -67,17 +54,27 @@ function createCards() {
       ul.append(h2, li);
     }
     div.classList = 'card';
+    btn.classList = 'btn';
     ul.classList = 'list';
     div.id = `card-${count}`;
     count += 1;
+    div.appendChild(btn);
     div.appendChild(ul);
     content.appendChild(div);
     return count;
   });
 }
 
-submit.addEventListener('click', e => {
-  e.preventDefault();
+submit.addEventListener('click', () => {
+  if (
+    title.value === '' ||
+    author.value === '' ||
+    pages.value === '' ||
+    read.value === ''
+  ) {
+    alert('Please complete each field to submit a new book');
+    return;
+  }
   addToLibrary();
   createCards();
 });
