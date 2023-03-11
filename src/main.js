@@ -26,6 +26,12 @@ function addToLibrary() {
   read.value = '';
 }
 
+content.addEventListener('click', e => {
+  if (e.target.className === 'btn') {
+    e.target.parentNode.remove();
+  }
+})
+
 function capitalize(string) {
   return string.slice(0, 1).toUpperCase() + string.slice(1);
 }
@@ -44,6 +50,7 @@ function createCards() {
     const ul = document.createElement('ul');
     const btn = document.createElement('button');
     btn.textContent = 'X';
+    btn.setAttribute('type', 'button');
 
     for (let i = 0; i < keys.length; i++) {
       const h2 = document.createElement('h2');
@@ -55,6 +62,7 @@ function createCards() {
     }
     div.classList = 'card';
     btn.classList = 'btn';
+    btn.id = `btn-${count}`;
     ul.classList = 'list';
     div.id = `card-${count}`;
     count += 1;
