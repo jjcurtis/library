@@ -24,16 +24,20 @@
       <label for="pages">Pages</label>
       <input type="text" id="pages" />
       <label for="read">Read Yet?</label>
-      <input type="text" id="read" />
+      <div>
+        <input type="radio" id="yes" value="Yes" name="read" />
+        <label for="yes">Yes</label>
+        <input type="radio" id="no" value="No" name="read" />
+        <label for="no">No</label>
+      </div>
       <button
-        type="submit" id="submit"
+        type="submit"
+        id="submit"
         class="w-10 border bg-sky-500 text-white px-5 flex justify-center text-3xl mt-2 rounded-lg"
       >
         +
       </button>
     </div>
-    <main class="content">
-      
-    </main>
+    <main class="content"></main>
   </body>
 </html>

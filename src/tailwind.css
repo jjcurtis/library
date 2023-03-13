@@ -81,8 +81,12 @@ h1 {
 
 body div.grid.grid-cols-2 input {
   border-radius: 5px;
-  padding-right: 1rem;
   transition: 300ms;
+}
+
+.form div:last-of-type {
+  display: flex;
+  gap: 10px;
 }
 
 body div.grid.grid-cols-2 label {
