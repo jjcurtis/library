@@ -14,11 +14,15 @@ const library = [];
 
 function Book() {
   (this.title = title.value),
-    (this.author = author.value),
-    (this.pages = pages.value),
-    (this.read = yes.checked ? yes.value : no.value);
+  (this.author = author.value),
+  (this.pages = pages.value),
+  (this.read = yes.checked ? yes.value : no.value);
   this.index = count - 1;
 }
+
+Book.prototype.changeReadStatus = function () {
+  this.read === yes.value ? (this.read = no.value) : (this.read = yes.value);
+};
 
 function addToLibrary() {
   library.push(new Book());
@@ -45,6 +49,7 @@ function createCards() {
       indexCount += 1;
       return book.index;
     });
+
     indexCount = 0;
   }
 
@@ -55,6 +60,7 @@ function createCards() {
     const div = document.createElement('div');
     const ul = document.createElement('ul');
     const btn = document.createElement('button');
+    const img = document.createElement('img');
     btn.textContent = 'X';
     btn.setAttribute('type', 'button');
 
@@ -75,29 +81,39 @@ function createCards() {
     div.dataset.indexNumber = `${cardCount - 1}`;
     div.appendChild(btn);
     div.appendChild(ul);
+    img.setAttribute('src', '../rotate-small-left-svgrepo-com.svg');
+    img.setAttribute('tabindex', '0');
+    img.classList = 'rotate-button';
+    div.appendChild(img);
     content.appendChild(div);
     cardCount += 1;
   });
+
   cardCount = 1;
   count += 1;
   return count;
 }
 
 content.addEventListener('click', e => {
+  const div = e.target.parentNode;
+  const index = library.findIndex(
+    book => book.index === +div.dataset.indexNumber
+  );
+
   if (e.target.className === 'btn') {
-    const div = e.target.parentNode;
-    const index = library.findIndex(
-      book => book.index === +div.dataset.indexNumber
-    );
     div.remove();
     library.splice(index, 1);
-    const cards = document.querySelectorAll('div.card');
-    cards.forEach(card => {
-      content.removeChild(card);
-    });
-
-    createCards();
   }
+
+  if (e.target.className === 'rotate-button') {
+    library[index].changeReadStatus();
+  }
+
+  const cards = document.querySelectorAll('div.card');
+  cards.forEach(card => {
+    content.removeChild(card);
+  });
+  createCards();
 });
 
 submit.addEventListener('click', () => {

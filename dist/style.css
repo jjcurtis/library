@@ -669,7 +669,7 @@ h1 {
   display: grid;
   gap: 1rem;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), .5fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), .4fr));
 }
 
 .card {
@@ -698,10 +698,22 @@ h1 {
   width: min-content;
 }
 
-.btn:hover {
+.btn:hover,
+.rotate-button:hover {
   background: black;
   border-color: #1393ce;
   font-weight: bold;
+}
+
+.rotate-button {
+  margin-top: 15px;
+  border: 1px solid white;
+  background: #1393ce;
+  border-radius: 5px;
+}
+
+.rotate-button:active {
+  background: #1393ce;
 }
 
 .card:hover {
