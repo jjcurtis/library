@@ -25,6 +25,7 @@ Book.prototype.changeReadStatus = function () {
 };
 
 function addToLibrary() {
+  // Add a new book and reset input fields
   library.push(new Book());
   title.value = '';
   author.value = '';
@@ -37,11 +38,13 @@ function capitalize(string) {
 }
 
 function createCards() {
-  if (library.length > 1) {
+  // Reassign indexes when library updates
+  if (library.length > 0) {
     const cards = document.querySelectorAll('div.card');
     cards.forEach(card => {
       content.removeChild(card);
     });
+
     let indexCount = 0;
     library.map(book => {
       // eslint-disable-next-line no-param-reassign
@@ -61,9 +64,8 @@ function createCards() {
     const ul = document.createElement('ul');
     const btn = document.createElement('button');
     const img = document.createElement('img');
-    btn.textContent = 'X';
-    btn.setAttribute('type', 'button');
 
+    // Map book props to elements and add to list
     for (let i = 0; i < keys.length - 1; i++) {
       const h2 = document.createElement('h2');
       const li = document.createElement('li');
@@ -73,10 +75,13 @@ function createCards() {
       ul.append(h2, li);
     }
 
-    div.classList = 'card';
+    // Set props of card elements and append to page
+    btn.textContent = 'X';
+    btn.setAttribute('type', 'button');
     btn.classList = 'btn';
     btn.id = `btn-${cardCount}`;
     ul.classList = 'list';
+    div.classList = 'card';
     div.id = `${cardCount}`;
     div.dataset.indexNumber = `${cardCount - 1}`;
     div.appendChild(btn);
@@ -117,6 +122,7 @@ content.addEventListener('click', e => {
 });
 
 submit.addEventListener('click', () => {
+  // Ensure no empty fields
   if (
     title.value === '' ||
     author.value === '' ||
